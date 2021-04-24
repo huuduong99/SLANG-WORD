@@ -37,6 +37,14 @@ public class Main {
 				break;
 			}
 
+			case "2": {
+				cls();
+				System.out.println("Search by Defition");
+				String a = scanner.nextLine();
+				slangWordFunction.FindByDefinition(a);
+				break;
+			}
+
 			case "11":
 				return;
 

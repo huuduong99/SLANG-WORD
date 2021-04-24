@@ -62,6 +62,21 @@ public class SlangWordFunction {
 		System.out.println("This is results:" );
 		System.out.println(results);
 	}
-
 	
+	public void FindByDefinition(String definition) {
+		List<String> results = new ArrayList<>();
+	
+		for( var item : slangWordHashMap.keySet()) {
+			slangWordHashMap.get(item).forEach((value) -> {
+				if(value.toUpperCase().contains(definition.toUpperCase())) {
+					results.add(item);
+					return;
+				}
+			});
+		}
+		
+		System.out.println("This is results:" );
+		System.out.print(results);
+	}
+
 }
