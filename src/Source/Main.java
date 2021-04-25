@@ -30,18 +30,22 @@ public class Main {
 			case "0":
 				return;
 			case "1": {
-				cls();
-				System.out.println("Search by SlangWord");
+				System.out.println("=====Search by SlangWord=====");
 				String a = scanner.nextLine();
 				slangWordFunction.FindBySlangWord(a);
 				break;
 			}
 
 			case "2": {
-				cls();
-				System.out.println("Search by Defition");
+				System.out.println("======Search by Defition=====");
 				String a = scanner.nextLine();
 				slangWordFunction.FindByDefinition(a);
+				break;
+			}
+			
+			case "3":{
+				System.out.println("=======Show history=======");
+				slangWordFunction.ShowHistories();
 				break;
 			}
 
@@ -51,7 +55,7 @@ public class Main {
 			default:
 				System.out.println("Fail! Please choose again! Enter to continue...");
 				scanner.nextLine();
-				cls();
+	
 
 			}
 		}
