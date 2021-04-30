@@ -31,21 +31,35 @@ public class Main {
 				return;
 			case "1": {
 				System.out.println("=====Search by SlangWord=====");
+				System.out.print("Enter the slangWord: ");
 				String a = scanner.nextLine();
 				slangWordFunction.FindBySlangWord(a);
 				break;
 			}
 
 			case "2": {
-				System.out.println("======Search by Defition=====");
+				System.out.println("======Search by Definition=====");
+				System.out.print("Enter the definition: ");
 				String a = scanner.nextLine();
 				slangWordFunction.FindByDefinition(a);
 				break;
 			}
-			
-			case "3":{
+
+			case "3": {
 				System.out.println("=======Show history=======");
 				slangWordFunction.ShowHistories();
+				break;
+			}
+			case "6": {
+				System.out.println("=======Delete Slangword=======");
+				System.out.print("Enter the slangWord: ");
+				String a = scanner.nextLine();
+				boolean existSlangWord = slangWordFunction.CheckExistSlangWord(a);
+				if (existSlangWord) {
+					slangWordFunction.DeleteSlangWord(a);
+				} else {
+					System.out.print("Slangword not exist");
+				}
 				break;
 			}
 
@@ -55,7 +69,6 @@ public class Main {
 			default:
 				System.out.println("Fail! Please choose again! Enter to continue...");
 				scanner.nextLine();
-	
 
 			}
 		}

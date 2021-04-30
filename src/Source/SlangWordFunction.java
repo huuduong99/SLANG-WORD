@@ -62,6 +62,26 @@ public class SlangWordFunction {
 		}
 	}
 
+	public static void SaveSlangWord() {
+		try {
+			File file = new File(SLANGWORD_URL);
+			FileWriter fileWriter = new FileWriter(file);
+			for (String key : slangWordHashMap.keySet()) {
+				fileWriter.write(key + "`");
+				List<String> defintions = slangWordHashMap.get(key);
+				for (int i = 0; i < defintions.size(); i++) {
+					fileWriter.write(defintions.get(i));
+					if (i + 1 < defintions.size())
+						fileWriter.write("|");
+				}
+				fileWriter.write("\n");
+			}
+			fileWriter.close();
+		} catch (Exception ex) {
+			System.out.println("Error: " + ex);
+		}
+	}
+
 	public void FindBySlangWord(String slangWord) {
 		List<String> results = slangWordHashMap.get(slangWord.toUpperCase());
 		System.out.println("This is results:");
@@ -125,6 +145,18 @@ public class SlangWordFunction {
 		} catch (Exception ex) {
 			System.out.println("Error: " + ex);
 		}
+	}
+
+	public boolean CheckExistSlangWord(String slangWord) {
+		boolean result = slangWordHashMap.containsKey(slangWord.toUpperCase());
+		return result;
+
+	}
+
+	public void DeleteSlangWord(String slangWord) {
+		slangWordHashMap.remove(slangWord.toUpperCase());
+		System.out.println("Delete successfully");
+		SaveSlangWord();
 	}
 
 }
