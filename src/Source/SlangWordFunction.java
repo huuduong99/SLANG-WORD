@@ -1,7 +1,6 @@
 package Source;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,6 +12,7 @@ import java.util.Scanner;
 
 public class SlangWordFunction {
 	private static String SLANGWORD_URL = "src/slang_word.txt";
+	private static String SLANGWORD_ORIGIN_URL = "src/slang_word_origin.txt";
 	private static String HISTORY_URL = "src/history.txt";
 	public static HashMap<String, List<String>> slangWordHashMap = new HashMap<>();
 	public static List<String> slangWordHistories = new ArrayList<String>();
@@ -21,7 +21,7 @@ public class SlangWordFunction {
 
 	private SlangWordFunction() {
 		try {
-			ReadFile();
+			ReadFile(SLANGWORD_URL);
 			ReadHistory();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,10 +39,12 @@ public class SlangWordFunction {
 		return obj;
 	}
 
-	public void ReadFile() {
+	public void ReadFile(String url) {
 		try {
 
-			File file = new File(SLANGWORD_URL);
+			slangWordHashMap.clear();
+
+			File file = new File(url);
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			String line;
@@ -250,6 +252,13 @@ public class SlangWordFunction {
 		} else {
 			System.out.println("SlangWord is not exist !!!");
 		}
+	}
+
+	public void ResetSlangWord() {
+		ReadFile(SLANGWORD_ORIGIN_URL);
+		System.out.println("Reset successfull !!!");
+
+		SaveSlangWord();
 	}
 
 }

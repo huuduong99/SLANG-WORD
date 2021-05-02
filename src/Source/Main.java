@@ -86,6 +86,13 @@ public class Main {
 				}
 				break;
 			}
+			
+			case "7": {
+				System.out.println("=======Reset Slangword=======");
+				slangWordFunction.ResetSlangWord();
+				break;
+
+			}
 
 			case "11":
 				System.out.print("You are exist !!!");
