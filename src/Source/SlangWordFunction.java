@@ -1,6 +1,5 @@
 package Source;
 
-import java.awt.print.Printable;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,8 +10,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
-
-import com.sun.tools.classfile.CharacterRangeTable_attribute.Entry;
 
 public class SlangWordFunction {
 	private static String SLANGWORD_URL = "src/slang_word.txt";
@@ -203,6 +200,56 @@ public class SlangWordFunction {
 			SaveSlangWord();
 		}
 
+	}
+
+	public void EditSlangWord(String slangWord) {
+		List<String> defitions = new ArrayList<String>();
+
+		if (CheckExistSlangWord(slangWord)) {
+			while (true) {
+				System.out.println("Choose your option");
+				System.out.println("A. Add definition");
+				System.out.println("B. Replace definiton");
+				System.out.println("Your choice: ");
+				String option = scanner.nextLine();
+				switch (option.toUpperCase()) {
+				case "A": {
+					System.out.println("New definition to add:");
+					String a = scanner.nextLine();
+					defitions.add(a);
+
+					List<String> defintionList = slangWordHashMap.get(slangWord.toUpperCase());
+					for (String i : defintionList) {
+						defitions.add(i);
+					}
+
+					slangWordHashMap.put(slangWord.toUpperCase(), defitions);
+					System.out.println("Add definition successfully");
+					SaveSlangWord();
+					return;
+
+				}
+				case "B": {
+					System.out.println("New definition to replace:");
+					String a = scanner.nextLine();
+					defitions.add(a);
+
+					slangWordHashMap.put(slangWord.toUpperCase(), defitions);
+					System.out.println("Replace successfully");
+					SaveSlangWord();
+					return;
+
+				}
+				default:
+					System.out.println("Please choose again! Enter to continue...");
+					scanner.nextLine();
+					break;
+				}
+			}
+
+		} else {
+			System.out.println("SlangWord is not exist !!!");
+		}
 	}
 
 }

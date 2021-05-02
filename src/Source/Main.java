@@ -27,8 +27,6 @@ public class Main {
 			String choice = scanner.nextLine();
 
 			switch (choice) {
-			case "0":
-				return;
 			case "1": {
 				System.out.println("=====Search by SlangWord=====");
 				System.out.print("Enter the slangWord: ");
@@ -62,6 +60,15 @@ public class Main {
 
 			}
 
+			case "5": {
+				System.out.println("=======Edit Slangword=======");
+				System.out.print("Enter the slangWord: ");
+				String a = scanner.nextLine();
+				slangWordFunction.EditSlangWord(a);
+				break;
+
+			}
+
 			case "6": {
 				System.out.println("=======Delete Slangword=======");
 				System.out.print("Enter the slangWord: ");
@@ -81,6 +88,7 @@ public class Main {
 			}
 
 			case "11":
+				System.out.print("You are exist !!!");
 				return;
 
 			default:
