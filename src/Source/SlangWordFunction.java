@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 import com.sun.tools.classfile.CharacterRangeTable_attribute.Entry;
 
@@ -19,6 +20,7 @@ public class SlangWordFunction {
 	public static HashMap<String, List<String>> slangWordHashMap = new HashMap<>();
 	public static List<String> slangWordHistories = new ArrayList<String>();
 	private static SlangWordFunction obj = new SlangWordFunction();
+	private static Scanner scanner = new Scanner(System.in);
 
 	private SlangWordFunction() {
 		try {
@@ -159,6 +161,48 @@ public class SlangWordFunction {
 		SaveSlangWord();
 	}
 
-	
+	public void AddSlangWord(String slangWord, String defintion) {
+		List<String> defitions = new ArrayList<String>();
+		defitions.add(defintion);
+		if (CheckExistSlangWord(slangWord)) {
+			while (true) {
+				System.out.println("Slang word exist, choose your option");
+				System.out.println("A. Overwrite");
+				System.out.println("B. Duplicate");
+				System.out.println("Your choice: ");
+				String option = scanner.nextLine();
+				switch (option.toUpperCase()) {
+				case "A": {
+					slangWordHashMap.put(slangWord.toUpperCase(), defitions);
+					System.out.println("Overwrite successfully");
+					SaveSlangWord();
+					return;
+
+				}
+				case "B": {
+					List<String> defintionList = slangWordHashMap.get(slangWord.toUpperCase());
+					for (String i : defintionList) {
+						defitions.add(i);
+					}
+					slangWordHashMap.put(slangWord.toUpperCase(), defitions);
+					System.out.println("Duplicate successfully");
+					SaveSlangWord();
+					return;
+
+				}
+				default:
+					System.out.println("Please choose again! Enter to continue...");
+					scanner.nextLine();
+					break;
+				}
+			}
+
+		} else {
+			slangWordHashMap.put(slangWord.toUpperCase(), defitions);
+			System.out.println("Add successfully");
+			SaveSlangWord();
+		}
+
+	}
 
 }

@@ -23,7 +23,7 @@ public class Main {
 			System.out.println("9. Minigame to find Definition ");
 			System.out.println("10. Minigame to find Slangword ");
 			System.out.println("11. Exit ");
-			System.out.println("YOUR CHOICE:  ");
+			System.out.println("Your choice:  ");
 			String choice = scanner.nextLine();
 
 			switch (choice) {
@@ -51,6 +51,17 @@ public class Main {
 				break;
 			}
 
+			case "4": {
+				System.out.println("======= Add Slangword=======");
+				System.out.print("Enter the slangWord: ");
+				String a = scanner.nextLine();
+				System.out.print("Enter the defintion: ");
+				String b = scanner.nextLine();
+				slangWordFunction.AddSlangWord(a, b);
+				break;
+
+			}
+
 			case "6": {
 				System.out.println("=======Delete Slangword=======");
 				System.out.print("Enter the slangWord: ");
@@ -73,7 +84,7 @@ public class Main {
 				return;
 
 			default:
-				System.out.println("Fail! Please choose again! Enter to continue...");
+				System.out.println("Please choose again! Enter to continue...");
 				scanner.nextLine();
 
 			}
