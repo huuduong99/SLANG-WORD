@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class SlangWordFunction {
@@ -135,7 +136,7 @@ public class SlangWordFunction {
 		});
 	}
 
-	public static void SaveHistory() {
+	public void SaveHistory() {
 		try {
 			File file = new File(HISTORY_URL);
 			FileWriter fileWriter = new FileWriter(file);
@@ -259,6 +260,22 @@ public class SlangWordFunction {
 		System.out.println("Reset successfull !!!");
 
 		SaveSlangWord();
+	}
+
+	public String RandomSlangWord() {
+		Random random = new Random();
+		int number = random.nextInt(slangWordHashMap.size() - 1);
+		int index = 0;
+		String slangWord = "";
+
+		for (String key : slangWordHashMap.keySet()) {
+			if (index == number) {
+				slangWord = key;
+				break;
+			}
+			index++;
+		}
+		return slangWord;
 	}
 
 }

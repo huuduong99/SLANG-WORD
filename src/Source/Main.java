@@ -86,10 +86,19 @@ public class Main {
 				}
 				break;
 			}
-			
+
 			case "7": {
 				System.out.println("=======Reset Slangword=======");
 				slangWordFunction.ResetSlangWord();
+				break;
+
+			}
+
+			case "8": {
+				System.out.println("=======Random Slangword=======");
+				String result = slangWordFunction.RandomSlangWord();
+				System.out.println("Slangword today is: " + result);
+
 				break;
 
 			}
