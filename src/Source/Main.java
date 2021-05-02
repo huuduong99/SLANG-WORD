@@ -50,13 +50,19 @@ public class Main {
 				slangWordFunction.ShowHistories();
 				break;
 			}
+
 			case "6": {
 				System.out.println("=======Delete Slangword=======");
 				System.out.print("Enter the slangWord: ");
 				String a = scanner.nextLine();
 				boolean existSlangWord = slangWordFunction.CheckExistSlangWord(a);
 				if (existSlangWord) {
-					slangWordFunction.DeleteSlangWord(a);
+					System.out.println("Are you remove it: (Y/N) ");
+					String confirm = scanner.nextLine();
+					if (confirm.equals("Y") || confirm.equals("y")) {
+						slangWordFunction.DeleteSlangWord(a);
+					}
+
 				} else {
 					System.out.print("Slangword not exist");
 				}
