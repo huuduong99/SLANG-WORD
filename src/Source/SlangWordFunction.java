@@ -278,4 +278,74 @@ public class SlangWordFunction {
 		return slangWord;
 	}
 
+	public void MinigameFindDefinition() {
+
+		List<String> slangwords = new ArrayList<String>();
+		List<String> definitions = new ArrayList<String>();
+
+		do {
+			String a = RandomSlangWord();
+			if (!slangwords.contains(a)) {
+				slangwords.add(a);
+				String b = slangWordHashMap.get(a.toUpperCase()).get(0);
+				definitions.add(b);
+			}
+		} while (slangwords.size() < 4);
+
+		Random random = new Random();
+		int number = random.nextInt(4);
+		System.out.println("Question: What is the Defintion for " + slangwords.get(number));
+		System.out.println("A. " + definitions.get(0));
+		System.out.println("B. " + definitions.get(1));
+		System.out.println("C. " + definitions.get(2));
+		System.out.println("D. " + definitions.get(3));
+
+		while (true) {
+			System.out.print("Your answer: ");
+			String answer = scanner.nextLine().toUpperCase();
+			switch (answer) {
+			case "A": {
+				if (number == 0) {
+					System.out.println("your answer is correct !!!");
+				} else {
+					System.out.println("your answer not correct. Answer is: " + definitions.get(number));
+				}
+				return;
+			}
+			case "B": {
+				if (number == 1) {
+					System.out.println("your answer is correct !!!");
+				} else {
+					System.out.println("your answer not correct. Answer is: " + definitions.get(number));
+				}
+				return;
+			}
+			case "C": {
+				if (number == 2) {
+					System.out.println("your answer is correct !!!");
+				} else {
+					System.out.println("your answer not correct. Answer is: " + definitions.get(number));
+				}
+				return;
+
+			}
+			case "D": {
+				if (number == 3) {
+					System.out.println("your answer is correct !!!");
+				} else {
+					System.out.println("your answer not correct. Answer is: " + definitions.get(number));
+				}
+				return;
+
+			}
+			default:
+				System.out.println("Please choose again! Enter to continue...");
+				scanner.nextLine();
+				break;
+
+			}
+		}
+
+	}
+
 }

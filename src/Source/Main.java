@@ -102,6 +102,13 @@ public class Main {
 				break;
 
 			}
+			
+			case "9": {
+				System.out.println("=======Minigame to find Definition=======");
+				slangWordFunction.MinigameFindDefinition();
+				break;
+
+			}
 
 			case "11":
 				System.out.print("You are exist !!!");
